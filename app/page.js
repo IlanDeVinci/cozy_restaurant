@@ -160,11 +160,11 @@ export const Navigate = () => {
 		<>
 			<nav
 				className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 backdrop-blur-sm
-        ${
-					scrolled
-						? "bg-amber-900/95 shadow-2xl shadow-amber-950/20"
-						: "bg-gradient-to-b from-black/50 to-transparent"
-				}`}>
+		${
+			scrolled
+				? "bg-amber-900/95 shadow-2xl shadow-amber-950/20"
+				: "bg-gradient-to-b from-black/50 to-transparent"
+		}`}>
 				<div className="container mx-auto flex justify-between items-center py-6">
 					<a
 						href="/"
@@ -175,13 +175,11 @@ export const Navigate = () => {
 					{/* Desktop Navigation */}
 					<div className="hidden md:block">
 						<ul className="flex space-x-12">
-							{" "}
-							{/* Increased space between items */}
 							{[
 								{ name: "Home", path: "/" },
 								{ name: "Menu", path: "/menu" },
-								{ name: "About", path: "#about" },
-								{ name: "Contact", path: "#contact" },
+								{ name: "About", path: "/#about" },
+								{ name: "Contact", path: "/#contact" },
 							].map((item) => (
 								<li key={item.name}>
 									<a
@@ -216,13 +214,18 @@ export const Navigate = () => {
 				<div className="p-6">
 					<h2 className="text-2xl font-serif text-amber-50 mb-8">Menu</h2>
 					<ul className="space-y-6">
-						{["Home", "Menu", "About", "Contact"].map((item) => (
-							<li key={item}>
+						{[
+							{ name: "Home", path: "/" },
+							{ name: "Menu", path: "/menu" },
+							{ name: "About", path: "/#about" },
+							{ name: "Contact", path: "/#contact" },
+						].map((item) => (
+							<li key={item.name}>
 								<a
-									href={`#${item.toLowerCase()}`}
+									href={item.path}
 									onClick={closeMenu}
 									className="flex items-center text-amber-50 hover:text-amber-200 transition-colors group">
-									<span className="text-lg">{item}</span>
+									<span className="text-lg">{item.name}</span>
 									<ChevronRight
 										className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity"
 										size={16}
